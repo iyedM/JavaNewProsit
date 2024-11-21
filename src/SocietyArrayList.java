@@ -4,22 +4,32 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SocietyArrayList implements IGestion<Employee>{
-    private List<Employee> employees = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>(); //on peut aussi faire new ArrayList<Employee>
 
     @Override
     public void ajouterEmployer(Employee employee) {
         employees.add(employee);
     }
 
+//    @Override
+//    public boolean rechercherEmployer(String nom) {
+//        for (Employee e : employees) {
+//            if (e.getNom().equals(nom)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
     @Override
     public boolean rechercherEmployer(String nom) {
-        for (Employee e : employees) {
-            if (e.getNom().equals(nom)) {
+        for (int i=0; i< employees.size();i++) {
+            if (employees.get(i).nom.equals(nom)) {
                 return true;
             }
         }
         return false;
     }
+
     @Override
     public boolean rechercherEmployer(Employee e) {
         return employees.contains(e);
@@ -40,20 +50,25 @@ public class SocietyArrayList implements IGestion<Employee>{
     }
     @Override
     public void trierEmployerParId() {
-        Collections.sort(employees, Comparator.comparingInt(Employee::getId));
+        Collections.sort(employees);
     }
-
-    // Method to sort employees by department name and grade
     @Override
     public void trierEmployerParDepartmentEtGrade() {
-        Collections.sort(employees, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee e1, Employee e2) {
-                int deptComparison = e1.getDepartment().compareToIgnoreCase(e2.getDepartment());
-                if (deptComparison != 0) {
-                    return deptComparison;
-                }
-                return Integer.compare(e1.getGrade(), e2.getGrade());
-            }
-        });
-}}
+        Collections.sort(employees, new DepartmentComparator().thenComparing(new EmployeeGradeComparator()));
+    }
+
+
+    // Method to sort employees by department name and grade
+//    @Override
+//    public void trierEmployerParDepartmentEtGrade() {
+//        Collections.sort(employees, new Comparator<Employee>() {
+//            @Override
+//            public int compare(Employee e1, Employee e2) {
+//                int deptComparison = e1.getDepartment().compareToIgnoreCase(e2.getDepartment());
+//                if (deptComparison != 0) {
+//                    return deptComparison;
+//                }
+//                return Integer.compare(e1.getGrade(), e2.getGrade());
+//            }
+//        });}
+}
