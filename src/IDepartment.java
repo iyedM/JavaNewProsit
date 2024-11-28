@@ -5,8 +5,11 @@ public interface IDepartment<T> {
 
     public void ajouterDepartement(T t);
     public boolean rechercherDepartement(String nom);
-    public boolean rechercherDepartement(T t);
-    public void supprimerDepartement(T t);
+
+    boolean rechercherDepartement(Department d);
+
+    void supprimerDepartement(Department d);
+
     public void displayDepartement();
     public TreeSet<T> trierDepartementById();
 }

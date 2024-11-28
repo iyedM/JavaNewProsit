@@ -5,12 +5,13 @@ import java.util.TreeSet;
 
 public class DepartmentHashSet implements  IDepartment{
 
+    Set<Department> departments = new HashSet<Department>();
+
     @Override
     public int compareTo(Employee o1, Employee o2) {
         return o1.getDepartment().compareTo(o2.getDepartment());
     }
 
-    Set<Department> departments = new HashSet<Department>();
     @Override
     public void ajouterDepartement(Object o) {
         departments.add((Department) o);
@@ -27,13 +28,13 @@ public class DepartmentHashSet implements  IDepartment{
     }
 
     @Override
-    public boolean rechercherDepartement(Object o) {
-        return  departments.contains(o);
+    public boolean rechercherDepartement(Department d) {
+        return  departments.contains(d);
     }
 
     @Override
-    public void supprimerDepartement(Object o) {
-        departments.remove(o);
+    public void supprimerDepartement(Department d) {
+        departments.remove(d);
 
     }
 

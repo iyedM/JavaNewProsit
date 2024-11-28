@@ -51,7 +51,7 @@ public class Department implements Comparable<Department> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == null)
+        if (obj == null)
             return false;
         if (this == obj)
             return true;
@@ -62,8 +62,10 @@ public class Department implements Comparable<Department> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(nameDepartment, id, nbrEmployees);
-
+        int res=17;
+        res = res * 17 + id;
+        res=res*17 + nameDepartment.hashCode();
+        return res;
     }
 
 
