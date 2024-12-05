@@ -5,6 +5,11 @@ public class Employee implements  Comparable<Employee>{
         return this.id - o.id;
     }
 
+    @Override
+    public int hashCode() {
+        return id+nom.hashCode();
+    }
+
     int id;
     String nom;
     String prenom;

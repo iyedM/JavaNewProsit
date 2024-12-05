@@ -8,6 +8,7 @@ public class AffectationHashMap {
     }
 
     public void afficherEmployesEtDepartements(){
+        //Set<Map.Entry<Employee, Department>> e = hashmap.entrySet();
         for(Map.Entry<Employee, Department> e : hashmap.entrySet()) {
             System.out.println(e.getKey() + ", " + e.getValue());
         }
@@ -17,14 +18,21 @@ public class AffectationHashMap {
         hashmap.remove(e);
     }
     public void supprimerEmployeEtDepartement (Employee e, Department d){
-        hashmap.remove(e,d);
+        hashmap.remove(e,d); // va retourner un boolean
     }
     public void afficherEmployes(){
+        //Set<Employee> employes = hashmap.keySet();
+        // for( Employee e : employes) {
+        //sout(e); }
         for(Map.Entry<Employee, Department> e : hashmap.entrySet()) {
             System.out.println(e.getKey());
         }
     }
     public void afficherDepartements(){
+//        Collection<Department> deps = hashmap.values();
+//        for(Department d : deps) {
+//            System.out.println(d);
+//        }
         for(Department d : hashmap.values()) {
             System.out.println(d);
         }
